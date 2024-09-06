@@ -1,0 +1,619 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="WebsiteMasterPage.master.cs" Inherits="WebsiteMasterPage" %>
+
+<%@ Register Assembly="DevExpress.Web.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+<%--<%@ Register Src="~/web_usercontrol/shop_cart.ascx" TagPrefix="uc1" TagName="shop_cart" %>--%>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <asp:ContentPlaceHolder ID="headlink" runat="server">
+    </asp:ContentPlaceHolder>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="icon" href="/favicon.ico" type="images/x-icon" />
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="/web_css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/web_css/ionicons.min.css" />
+    <link rel="stylesheet" href="/web_css/font-awesome.min.css" />
+    <link href='/web_css/owl.carousel.min.css' rel='stylesheet' type='text/css' />
+    <!-- Build Main CSS -->
+    <link href="/web_css/base.css" rel="stylesheet" />
+    <link href='/web_css/style.css' rel='stylesheet' type='text/css' />
+    <link href='/web_css/module.css' rel='stylesheet' type='text/css' />
+    <link href='/web_css/responsive.css' rel='stylesheet' type='text/css' />
+    <link href="/web_css/styleadd.css" rel="stylesheet" />
+    <!-- Header JS -->
+    <script src="/web_js/jquery-1.11.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FC5667P1JW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-FC5667P1JW');
+    </script>
+
+</head>
+<body>
+    <a class="chatmessenger" href="https://www.facebook.com/DaMyNghe.ChatLuong.CncStone/">
+        <img class="icon--img" src="/images/messenger.png" />
+    </a>
+    <a class="chatzalo" href="https://zalo.me/0961933688">
+        <img class="icon--img" src="/images/zalo.png" />
+    </a>
+    <a class="nhantin" href="sms:0961933688">
+        <img class="icon--img" src="/images/sms.png" />
+    </a>
+    <a href="tel:0961 933 688" class="myphone">
+        <img class="icon--img" src="/images/phone.gif" />
+    </a>
+    <div class="bottom-contact">
+        <ul>
+            <li>
+                <a id="myphone" href="tel:0961 933 688">
+                    <img class="icon--img" src="/images/phone1.gif" />
+                    <%-- <br />
+                    <span>Nhắn tin</span>--%>
+                </a>
+            </li>
+            <li>
+                <a id="chatzalo" href="https://zalo.me/0961933688">
+                    <img class="icon--img" src="/images/zalo.png" />
+                    <%--<br />
+                    <span>Chat zalo</span>--%>
+                </a>
+            </li>
+            <li>
+                <a id="nhantin" href="sms:0961933688">
+                    <img class="icon--img" src="/images/sms.png" />
+                    <%-- <br />
+                    <span>Nhắn tin</span>--%>
+                </a>
+            </li>
+            <li>
+                <a class="chatmessengermb" href="https://www.facebook.com/DaMyNghe.ChatLuong.CncStone/">
+                    <img class="icon--img" src="/images/messenger.png" />
+                </a>
+            </li>
+        </ul>
+    </div>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="scripmnfg" runat="server"></asp:ScriptManager>
+        <div class="mainpage-main">
+            <div id="mySidenav" class="sidenav">
+                <div class="nav-side-menu">
+                    <div class="menu-list">
+                        <ul id="menu-content" class="menu-content">
+                            <li class="collapsed active">
+                                <a href="/"><i class="fa fa-home"></i>Trang chủ<span class="arrow hidden"></span></a>
+                            </li>
+                            <li class="collapsed ">
+                                <a href="/gioi-thieu"><i class="fa fa-edit"></i>Giới thiệu<span class="arrow hidden"></span></a>
+                            </li>
+                            <li class="collapsed ">
+                                <a href="../../cac-du-an-cncstone"><i class="fa fa-edit"></i>Các dự án CNCstone<span class="arrow hidden"></span></a>
+                            </li>
+                            <li data-toggle="collapse" data-target="#main2" class="collapsed ">
+                                <a href="#" style="color: red"><i class="fa fa-bars"></i>Sản phẩm<span class="arrow "></span></a>
+                            </li>
+                            <li>
+                                <ul class="sub-menu collapse" id="main2">
+                                    <asp:Repeater ID="rpdanhmucmobi" runat="server" OnItemDataBound="rpdanhmucmobi_ItemDataBound">
+                                        <ItemTemplate>
+                                            <nav-item>
+                                                <li>
+                                                    <a href="../../<%#Eval("link_seo") %>"><%#Eval("productcate_title") %></a><span class="arrow collapsed" data-toggle="collapse" data-target="#sub<%#Eval("productcate_id") %>"></span>
+
+                                                </li>
+                                                <ul class="sub-menu collapse" id="sub<%#Eval("productcate_id") %>">
+                                                    <asp:Repeater ID="rpcatemobi" runat="server">
+                                                        <ItemTemplate>
+                                                            <li>
+                                                                <a href="../../<%#Eval("link_seo") %>"><%#Eval("productcate_title") %></a>
+                                                            </li>
+                                                        </ItemTemplate>
+                                                    </asp:Repeater>
+                                                </ul>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                </ul>
+                            </li>
+                            <li class="collapsed " data-toggle="collapse" data-target="#main3">
+                                <a href="/tin-tuc"><i class="fa fa-book"></i>Hướng dẫn phong thủy<span class="arrow hidden"></span></a>
+                            </li>
+                            <li>
+                                <ul class="sub-menu collapse" id="main3">
+                                    <asp:Repeater ID="rpnewscate" runat="server">
+                                        <ItemTemplate>
+                                            <li class="collapsed">
+                                                <a href="/danh-muc-tin-tuc/<%#cls_ToAscii.ToAscii(Eval("newscate_title").ToString().ToLower()) %>-<%#Eval("newscate_id") %>"><%#Eval("newscate_title") %><span class="arrow hidden"></span></a>
+                                            </li>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                </ul>
+                            </li>
+                            <li class="collapsed ">
+                                <a href="/lien-he"><i class="fa fa-envelope-o"></i>Liên hệ<span class="arrow hidden"></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="main-content" class="mainpage-main">
+                <div class="ovelay-mb"></div>
+                <asp:ContentPlaceHolder ID="hihead" runat="server">
+                </asp:ContentPlaceHolder>
+                <header class="header">
+                    <div class="topbar">
+                        <div class="container">
+
+                            <div class="row">
+                                <div class="col-md-3 col-sm-6 a-left">
+
+                                    <span class="phone"><a href="tel:0961933688"><span class="fa fa-phone"></span>&nbsp;0961.933.688</a></span>
+                                </div>
+                                <div class="col-md-4 hidden-sm hidden-xs">
+                                    <h4 class="heading__title">CTY CP XNK Đá Mỹ Nghệ CNC</h4>
+                                </div>
+                                <script type="text/javascript">
+                                    function searchClick1() {
+                                        window.location.href = '/tim-kiem?id=' + document.getElementById('txtGlobalSearch1').value;
+                                    }
+                                </script>
+                                <div class="col-md-5 col-sm-6 col-xs-12">
+                                    <div class="top-cart-contain">
+                                        <div class="menu-bar hidden-md hidden-lg" onclick="openNav()">
+                                            <img src='/web_images/menu-bar-w.png' alt='menu bar' />
+                                        </div>
+                                        <div class="header_search search_form">
+                                            <div class="input-group search-bar search_form">
+                                                <input id="txtGlobalSearch1" type="search" name="txtGlobalSearch1" onkeypress="if (event.keyCode==13){if(txtGlobalSearch1.value.length>2){window.location.href='/tim-kiem?id='+txtGlobalSearch1.value;return false;}else{return false;}}" placeholder="Từ khóa tìm kiếm... " class="input-group-field st-default-search-input search-text" autocomplete="off" />
+                                                <span class="input-group-btn">
+                                                    <a class="btn icon-fallback-text" onclick="searchClick1()">
+                                                        <i class="fa fa-search"></i>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu-main-top" class="menu-main-top">
+                        <nav>
+                            <ul id="nav-top" class="nav-top hidden-xs hidden-sm container">
+                                <li class="nav-item active"><a href="/">Trang chủ</a></li>
+                                <li class="menu-line">|</li>
+                                <li class="nav-item dropdown">
+                                    <a href="/gioi-thieu">Sản phẩm <i class="fa fa-angle-down" data-toggle="dropdown"></i></a>
+                                    <ul class="dropdown-menu" style="z-index: 2 !important">
+                                        <asp:Repeater ID="rpMenuCha" runat="server" OnItemDataBound="rpMenuCha_ItemDataBound">
+                                            <ItemTemplate>
+                                                <li class="dropdown-submenu"><a href="../../<%#Eval("link_seo") %>"><%#Eval("productcate_title") %><i class="<%#Eval("fa") %>" data-toggle="dropdown"></i></a>
+                                                    <ul class="dropdown-menu <%#Eval("hidden") %>">
+                                                        <asp:Repeater ID="rpMenuCon" runat="server">
+                                                            <ItemTemplate>
+                                                                <li class="dropdown-submenu"><a href="../../<%#Eval("link_seo") %>"><%#Eval("productcate_title") %></a></li>
+                                                            </ItemTemplate>
+                                                        </asp:Repeater>
+                                                    </ul>
+                                                </li>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    </ul>
+                                </li>
+                                <li class="menu-line">|</li>
+                                <li class="nav-item "><a href="../../cac-du-an-cncstone">Các dự án CNCstone</a></li>
+                                <li class="menu-line">|</li>
+                                <li class="nav-item "><a href="../../gioi-thieu">Giới thiệu</a></li>
+                                <li class="menu-line">|</li>
+                                <li class="nav-item dropdown">
+                                    <a href="#">TIN TỨC<i class="fa fa-angle-down" data-toggle="dropdown"></i></a>
+                                    <ul class="dropdown-menu" style="z-index: 2 !important">
+                                        <li class="dropdown-submenu"><a href="../tin-tuc/bai-viet-hang-ngay-8">Bài viết hàng ngày</a></li>
+                                        <li class="dropdown-submenu"><a href="../tin-tuc/cac-vi-phat-va-bo-tat-2">Giới thiệu sản phẩm</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-line">|</li>
+                                <%--<li class="nav-item "><a href="../../san-pham-theo-yeu-cau">Theo yêu cầu</a></li>--%>
+                                <li class="nav-item "><a href="/video-san-pham">Video</a></li>
+                                <li class="menu-line">|</li>
+                                <li class="nav-item "><a href="/lien-he">Liên hệ</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <%--menu2--%>
+                    <div id="menu-main" class="menu-main small-top">
+                        <nav>
+                            <ul id="nav" class="nav hidden-xs hidden-sm container-fluid col-lg-8 col-md-8 col-sm-8" style="padding: 0.3% 0 0 1%;">
+                                <li class="nav-item dropdown" style="padding: -0.5% 1% 0 1%;">
+                                    <a href="/gioi-thieu" style="padding: 0;">Danh mục sản phẩm <i class="fa fa-angle-down" data-toggle="dropdown"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <asp:Repeater ID="rpMenuCon" runat="server" OnItemDataBound="rpMenuCha_ItemDataBound">
+                                            <ItemTemplate>
+                                                <li class="dropdown-submenu"><a href="../../<%#Eval("link_seo") %>"><%#Eval("productcate_title") %><i class="<%#Eval("fa") %>" data-toggle="dropdown"></i></a>
+                                                    <ul class="dropdown-menu <%#Eval("hidden") %>">
+                                                        <asp:Repeater ID="rpMenuCon" runat="server">
+                                                            <ItemTemplate>
+                                                                <li class="dropdown-submenu"><a href="../../<%#Eval("link_seo") %>"><%#Eval("productcate_title") %></a></li>
+                                                            </ItemTemplate>
+                                                        </asp:Repeater>
+                                                    </ul>
+                                                </li>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    </ul>
+
+                                </li>
+                                <li class="menu-line">|</li>
+                                <li class="nav-item "><a href="../../cac-du-an-cncstone">Các dự án CNCstone</a></li>
+                                <li class="menu-line">|</li>
+                                <li class="nav-item "><a href="../../gioi-thieu">Giới thiệu</a></li>
+                                <li class="menu-line">|</li>
+                                <li class="nav-item dropdown">
+                                    <a href="/tin-tuc/cac-vi-phat-va-bo-tat-2">TIN TỨC<%-- <i class="fa fa-angle-down" data-toggle="dropdown"></i>--%></a>
+                                </li>
+                                <li class="menu-line">|</li>
+                                <%--<li class="nav-item "><a href="../../san-pham-theo-yeu-cau">Theo yêu cầu</a></li>--%>
+                                <li class="nav-item "><a>Video</a></li>
+                                <li class="menu-line">|</li>
+                                <li class="nav-item "><a href="/lien-he">Liên hệ</a></li>
+                            </ul>
+                            <div class="col-md-4 col-sm-4 col-sm-4 pull-right" style="text-align: center; padding: 0.3% 0 0 1%;">
+                                <div class="top-cart-contain">
+                                    <div class="menu-bar hidden-md hidden-lg" onclick="openNav()">
+                                        <img src='/web_images/menu-bar-w.png' alt='menu bar' />
+                                    </div>
+                                    <script type="text/javascript">
+                                        function searchClick() {
+                                            window.location.href = '/tim-kiem?id=' + document.getElementById('txtGlobalSearch').value;
+                                        }
+                                    </script>
+                                    <div class="header_search search_form">
+                                        <div class="input-group search-bar search_form">
+                                            <input id="txtGlobalSearch" type="search" name="txtGlobalSearch" style="border: none; border-radius: 3px; margin-top: 2px; color: #333; height: 40px; font-size: .85714em; /* width: 290px;" onkeypress="if (event.keyCode==13){if(txtGlobalSearch.value.length>2){window.location.href='/tim-kiem?id='+txtGlobalSearch.value;return false;}else{return false;}}" placeholder="Từ khóa tìm kiếm... " class="input-group-field st-default-search-input search-text" autocomplete="off" />
+                                            <span class="input-group-btn">
+                                                <a class="btn icon-fallback-text" onclick="searchClick()">
+                                                    <i class="fa fa-search" style="width: 32px; height: 32px; margin-top: 11%; line-height: 32px; border-radius: 50%; background: #D73932; color: #fff;"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </nav>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="menu2">
+                            <ul class="list-inline a-center">
+                                <li class="inline-block visible-xs"><a href="#" data-toggle="modal" data-target="#popup-dmuc">
+                                    <div class="ico-menu"><i class="fa fa-navicon"></i></div>
+                                    <span>Danh mục</span></a></li>
+                                <li class="inline-block"><a href="/cac-du-an-cncstone">
+                                    <div class="ico-menu"><i class="fa fa-line-chart"></i></div>
+                                    <span>Dự án</span></a></li>
+                                <li class="inline-block"><a href="/mo-da-115">
+                                    <div class="ico-menu"><i class="fa fa-line-chart"></i></div>
+                                    <span>Mộ đá</span></a></li>
+
+                                <li class="inline-block"><a href="/tuong-phat-da-224">
+                                    <div class="ico-menu"><i class="fa fa-tag"></i></div>
+                                    <span>Tượng Phật</span></a></li>
+
+                                <li class="inline-block"><a href="/cong-trinh-kien-truc/dai-phun-nuoc-148">
+                                    <div class="ico-menu"><i class="fa fa-gift"></i></div>
+                                    <span>Đài phun nước</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </header>
+                <asp:ContentPlaceHolder ID="himenu" runat="server">
+                </asp:ContentPlaceHolder>
+                <asp:ContentPlaceHolder ID="higlobal" runat="server">
+                </asp:ContentPlaceHolder>
+                <asp:ContentPlaceHolder ID="hislider" runat="server">
+                </asp:ContentPlaceHolder>
+                <asp:ContentPlaceHolder ID="hibelowtop" runat="server">
+                </asp:ContentPlaceHolder>
+                <asp:ContentPlaceHolder ID="hibodyhead" runat="server">
+                </asp:ContentPlaceHolder>
+                <asp:ContentPlaceHolder ID="hibodywrapper" runat="server">
+                </asp:ContentPlaceHolder>
+                <asp:ContentPlaceHolder ID="hibodybottom" runat="server">
+                </asp:ContentPlaceHolder>
+                <div class="branch">
+                    <h2 class="branch__heading">Tập Đoàn Xuất Khẩu Đá Mỹ Nghệ CNC</h2>
+                    <p class="branch__sologan">Luôn luôn cam kết <span class="branch__sologan--hl">100%</span> đá tự nhiên & nguyên khối, bền đẹp, tinh xảo và giá cả hợp lý nhất tại Việt Nam !</p>
+                    <div class="container">
+                        <div class="row">
+                            <%--<div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                                <div class="chinhanh-footer">
+                                    <h4 class="title-footer">Cơ Sở Công Ty Cp XNK CNC
+                                    </h4>
+                                </div>
+                                <div class="tabs-footer">
+                                    <div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+                                        <a class="nav-footer active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                                            <div class="school-icon"><i class="fa fa-building" aria-hidden="true"></i></div>
+                                            &nbsp;Công Ty Cp XNK Đá Mỹ Nghệ CNC<span><i class="fa fa-hand-o-right"></i></span></a>
+
+                                        <a class="nav-footer " id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+                                            <div class="school-icon"><i class="fa fa-building" aria-hidden="true"></i></div>
+                                            &nbsp;Công Ty TNHH MTV Trinh Chính<span><i class="fa fa-hand-o-right"></i></span></a>
+                                        <a class="nav-footer" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+                                            <div class="school-icon"><i class="fa fa-building" aria-hidden="true"></i></div>
+                                            &nbsp;Công Ty TNHH TV Đức Thành<span><i class="fa fa-hand-o-right"></i></span></a>
+                                        <a class="nav-footer" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+                                            <div class="school-icon"><i class="fa fa-building" aria-hidden="true"></i></div>
+                                            &nbsp;Công Ty CP Đá Mỹ Nghệ Duy Hưng<span><i class="fa fa-hand-o-right"></i></span></a>
+                                        <a class="nav-footer" id="v-pills-settingss-tab" data-toggle="pill" href="#v-pills-settingss" role="tab" aria-controls="v-pills-settingss" aria-selected="false">
+                                            <div class="school-icon"><i class="fa fa-building" aria-hidden="true"></i></div>
+                                            &nbsp;Công Ty TNHH Quang Minh Mê Công<span><i class="fa fa-hand-o-right"></i></span></a>
+                                    </div>
+
+                                </div>
+                            </div>--%>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="tab-show">
+                                    <h4 class="title-footer">Đá Mỹ Nghệ CNC</h4>
+                                    <div class="tab-content" id="v-pills-tabContent">
+                                        <div class="tab-pane fade active in" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                                    <div class="tab-content">
+                                                        <h4>Công Ty Cp XNK Đá Mỹ Nghệ CNC <span>(CNCSTONE)</span></h4>
+                                                        <p>Lô 3-4 Lê Thành Phương, Hòa Hải, Ngũ Hành Sơn, Đà Nẵng</p>
+                                                        <a class="tel-branch" href="tel:0961933688">Hotline: 0961.933.688</a>
+                                                    </div>
+                                                    <div class="camket">
+                                                        <h4>Đá Mỹ Nghệ CNC cam kết</h4>
+                                                        <div>
+                                                            <ul>
+                                                                <li><span>Sản Phẩm <b>chất lượng</b></span></li>
+                                                                <li><span>Tư vấn <b>nhiệt tình</b></span></li>
+                                                                <li><span>Dịch vụ <b>tốt nhất</b></span></li>
+                                                                <li><span>Hỗ trợ <b>suốt đời</b></span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                                    <div class="map">
+                                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3835.471424506924!2d108.24796381493998!3d15.988956488930564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31421097380bc839%3A0x29b1b2d6c30eb614!2zTMOqIFRow6BuaCBQaMawxqFuZywgSMOyYSBI4bqjaSwgTmfFqSBIw6BuaCBTxqFuLCDEkMOgIE7hurVuZyA1NTAwMDAsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1585390653727!5m2!1svi!2s" width="350" height="215" frameborder="0" style="border: 0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade " id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                                    <div class="tab-content">
+                                                        <h4>Công Ty TNHH MTV Trinh Chính <span>(TRINHCHINHSTONE)</span></h4>
+                                                        <p>20 Nguyễn Duy Trinh, Hòa Hải, Ngũ Hành Sơn, Đà Nẵng</p>
+                                                        <a class="tel-branch" href="tel:0961933688">Hotline: 0961.133.688</a>
+                                                    </div>
+                                                    <div class="camket">
+                                                        <h4>Đá Mỹ Nghệ CNC cam kết</h4>
+                                                        <div>
+                                                            <ul>
+                                                                <li><span>Sản Phẩm <b>chất lượng</b></span></li>
+                                                                <li><span>Tư vấn <b>nhiệt tình</b></span></li>
+                                                                <li><span>Dịch vụ <b>tốt nhất</b></span></li>
+                                                                <li><span>Hỗ trợ <b>suốt đời</b></span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                                    <div class="map">
+                                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3835.2631836924847!2d108.25806741494014!3d15.999809388923866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314210b8be3f14fb%3A0xa2b1f49f66b9edab!2zMjAgTmd1eeG7hW4gRHV5IFRyaW5oLCBIb8OgIEjhuqNpLCBOZ8WpIEjDoG5oIFPGoW4sIMSQw6AgTuG6tW5nIDU1MDAwMCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1585390697189!5m2!1svi!2s" width="350" height="215" frameborder="0" style="border: 0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                                    <div class="tab-content">
+                                                        <h4>Công Ty TNHH TV Đức Thành <span>(THEGIOITUONGDA)</span></h4>
+                                                        <p>247A/36 Huỳnh Văn Bánh, Phường 12, Phú Nhuận, Hồ Chí Minh</p>
+                                                        <a class="tel-branch" href="tel:0818795939">Hotline: 0818.79.59.39</a>
+                                                    </div>
+                                                    <div class="camket">
+                                                        <h4>Đá Mỹ Nghệ CNC cam kết</h4>
+                                                        <div>
+                                                            <ul>
+                                                                <li><span>Sản Phẩm <b>chất lượng</b></span></li>
+                                                                <li><span>Tư vấn <b>nhiệt tình</b></span></li>
+                                                                <li><span>Dịch vụ <b>tốt nhất</b></span></li>
+                                                                <li><span>Hỗ trợ <b>suốt đời</b></span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                                    <div class="map">
+                                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.265173351614!2d106.67476021488521!3d10.790990992311674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528d55039ab63%3A0x74aa958222d2b8d2!2zMjQ3QS8zNiBIdeG7s25oIFbEg24gQsOhbmgsIFBoxrDhu51uZyAxMiwgUGjDuiBOaHXhuq1uLCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1585392444862!5m2!1svi!2s" width="350" height="215" frameborder="0" style="border: 0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                                    <div class="tab-content">
+                                                        <h4>Công Ty CP Đá Mỹ Nghệ Duy Hưng <span>(DUYHUNGSTONE)</span></h4>
+                                                        <p>Tầng 6, Số 7 Tôn Thất Thuyết, Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
+                                                        <a class="tel-branch" href="tel:0762775688">Hotline: 0762.775.688</a>
+                                                    </div>
+                                                    <div class="camket">
+                                                        <h4>Đá Mỹ Nghệ CNC cam kết</h4>
+                                                        <div>
+                                                            <ul>
+                                                                <li><span>Sản Phẩm <b>chất lượng</b></span></li>
+                                                                <li><span>Tư vấn <b>nhiệt tình</b></span></li>
+                                                                <li><span>Dịch vụ <b>tốt nhất</b></span></li>
+                                                                <li><span>Hỗ trợ <b>suốt đời</b></span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                                    <div class="map">
+                                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.1318945177345!2d105.78310395457257!3d21.027407943198863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab5c3be15b6d%3A0x6b77ffa5090b6de8!2zQ8O0bmcgdHkgY-G7lSBwaOG6p24gxJHDoSBt4bu5IG5naOG7hyBEdXkgSMawbmc!5e0!3m2!1svi!2s!4v1585392977130!5m2!1svi!2s" width="350" height="215" frameborder="0" style="border: 0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="v-pills-settingss" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                                    <div class="tab-content">
+                                                        <h4>Công Ty TNHH Quang Minh Mê Công</h4>
+                                                        <p>99 Nguyễn Văn Tố, Phường Vĩnh Lạc, Rạch Giá, Kiên Giang </p>
+                                                        <a class="tel-branch" href="tel:0919698094">Hotline: 0919.698.094</a>
+                                                    </div>
+                                                    <div class="camket">
+                                                        <h4>Đá Mỹ Nghệ CNC cam kết</h4>
+                                                        <div>
+                                                            <ul>
+                                                                <li><span>Sản Phẩm <b>chất lượng</b></span></li>
+                                                                <li><span>Tư vấn <b>nhiệt tình</b></span></li>
+                                                                <li><span>Dịch vụ <b>tốt nhất</b></span></li>
+                                                                <li><span>Hỗ trợ <b>suốt đời</b></span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                                    <div class="map">
+                                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.3241064377257!2d105.08534941487859!3d9.99006369285798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0b47b2eba1e6f%3A0x6e9e9a30b968cf89!2zOTkgTmd1eeG7hW4gVsSDbiBU4buRLCBWxKluaCBM4bqhYywgUuG6oWNoIEdpw6EsIHThu4luaCBLacOqbiBHaWFuZywgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1585392530681!5m2!1svi!2s" width="350" height="215" frameborder="0" style="border: 0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <asp:ContentPlaceHolder ID="hibelowbottom" runat="server">
+                </asp:ContentPlaceHolder>
+                <footer class="footer">
+                    <div class="site-footer">
+                        <div class="container">
+                            <div class="footer-inner padding-top-40">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                                        <div class="footer-widget">
+                                            <h4><span>Về Chúng Tôi</span></h4>
+                                            <ul class="list-menu list-showroom">
+                                                <li class="style2"><%=tencongty %></li>
+                                                <li class="style2">Hotline :  <%=phone %></li>
+                                                <li class="style2">Địa chỉ: <%=diachi %></li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                                        <div class="footer-widget">
+                                            <h4><span>Hóa đơn giá trị gia tăng (vat invoice)
+                                            </span></h4>
+                                            <div class="list-menu">
+                                                <p>Mã số : 01GTKT0/001 </p>
+                                                <p>Kí hiệu : CN/20E</p>
+                                                <p>số :00000017</p>
+                                                <h4><span>Mã số thuế : 0402025621
+                                                </span></h4>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-lg-2" style="display: none">
+                                        <div class="footer-widget">
+                                            <h4><span>Chính sách</span></h4>
+                                            <ul class="list-menu list-right">
+                                                <asp:Repeater ID="rpchinhsach" runat="server">
+                                                    <ItemTemplate>
+                                                        <li><a href="/chinh-sach-dieu-khoan/<%#cls_ToAscii.ToAscii(Eval("csdk_title").ToString()) %>-<%#Eval("csdk_id") %>"><%#Eval("csdk_title") %></a></li>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-lg-2" style="display: none">
+                                        <div class="footer-widget">
+                                            <h4><span>Tài khoản</span></h4>
+                                            <ul class="list-menu list-right">
+                                                <asp:Repeater ID="rpdieukhoan" runat="server">
+                                                    <ItemTemplate>
+                                                        <li><a href="/chinh-sach-dieu-khoan/<%#cls_ToAscii.ToAscii(Eval("csdk_title").ToString()) %>-<%#Eval("csdk_id") %>"><%#Eval("csdk_title") %></a></li>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="copyright clearfix">
+                        <div class="container">
+                            <div class="inner clearfix">
+                                <div class="row">
+                                    <div class="col-sm-12 a-center">
+                                        <span>© Bản quyền thuộc về <b>công ty XNK đá mỹ nghệ CNC</b> <span class="fot-line">|</span> Thực hiện bởi <a href="#" title="CNC Stone" target="_blank">CNC Team</a></span>
+                                    </div>
+                                </div>
+                                <div id="fb-root" class=" fb_reset">
+                                </div>
+                                <div class="back-to-top hidden-xs"><i class="fa  fa-angle-up"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+                <asp:ContentPlaceHolder ID="hifooter" runat="server">
+                </asp:ContentPlaceHolder>
+                <script src='/web_js/owl.carousel.min.js' type='text/javascript'></script>
+                <script src="/web_js/bootstrap.min.js"></script>
+                <script src='/web_js/main.js' type='text/javascript'></script>
+
+                <asp:ContentPlaceHolder ID="hifootersite" runat="server">
+                </asp:ContentPlaceHolder>
+                <div id="popup-dmuc" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <div class="dmuc-main">
+                                    <asp:Repeater ID="rpdanhmucmobile" runat="server">
+                                        <ItemTemplate>
+                                            <a href="../../<%#Eval("link_seo") %>" class="block-dmuc">
+                                                <div class="img-dmuc">
+                                                    <img src="<%#Eval("productcate_icon") %>" />
+                                                </div>
+                                                <h3 class="title-dmuc"><%#Eval("productcate_title") %></h3>
+                                            </a>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
